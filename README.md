@@ -29,6 +29,8 @@ public class Phone
     public int Price { get; set; }
   }
 ```
-##Вот что получается
-![alt text](https://github.com/Limfips/WPF_SevenLab/blob/master/resImg/error_v1.2.1.png)
+
+Вот что получается
+![alt text](https://github.com/Limfips/MyMathLib/blob/master/resImg/error_v1.2.1.png?raw=true)
+
 как убрать лишние строки???
