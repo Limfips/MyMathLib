@@ -1,5 +1,8 @@
 ﻿## О проекте
 Ошибка располагается в файле MainVindow.xaml
+
+[Просмотреть](https://github.com/Limfips/MyMathLib/blob/master/TaylorSeriesFormm/MainWindow.xaml)
+
 ```python
 <DataGrid x:Name="PhonesGrid"
                   Grid.Row="0"
@@ -8,6 +11,9 @@
         </DataGrid>
 ```
 и в файле MainWindow.xaml.cs
+
+[Просмотреть](https://github.com/Limfips/MyMathLib/blob/master/TaylorSeriesFormm/MainWindow.xaml.cs)
+
 ```python
 private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     { 
