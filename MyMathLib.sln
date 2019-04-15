@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMathLib", "MyMathLib\MyMathLib.csproj", "{CB8D1865-B7B4-4394-8E40-E05F8C8A5A1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaylorSeriesForm", "TaylorSeriesForm\TaylorSeriesForm.csproj", "{5098209C-1499-4CB2-9088-7BF1DA090470}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaylorSeriesFormm", "TaylorSeriesFormm\TaylorSeriesFormm.csproj", "{CBDDD8EC-C0AD-4F9E-B57C-24899F16CA82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{CB8D1865-B7B4-4394-8E40-E05F8C8A5A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB8D1865-B7B4-4394-8E40-E05F8C8A5A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB8D1865-B7B4-4394-8E40-E05F8C8A5A1C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5098209C-1499-4CB2-9088-7BF1DA090470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5098209C-1499-4CB2-9088-7BF1DA090470}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5098209C-1499-4CB2-9088-7BF1DA090470}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5098209C-1499-4CB2-9088-7BF1DA090470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBDDD8EC-C0AD-4F9E-B57C-24899F16CA82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBDDD8EC-C0AD-4F9E-B57C-24899F16CA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBDDD8EC-C0AD-4F9E-B57C-24899F16CA82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBDDD8EC-C0AD-4F9E-B57C-24899F16CA82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

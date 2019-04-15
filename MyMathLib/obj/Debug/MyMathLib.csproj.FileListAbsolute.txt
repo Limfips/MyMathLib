@@ -1,0 +1,6 @@
+D:\RiderProjects\Lab7_2\MyMathLib\MyMathLib\bin\Debug\MyMathLib.dll
+D:\RiderProjects\Lab7_2\MyMathLib\MyMathLib\bin\Debug\MyMathLib.pdb
+D:\RiderProjects\Lab7_2\MyMathLib\MyMathLib\obj\Debug\MyMathLib.csprojAssemblyReference.cache
+D:\RiderProjects\Lab7_2\MyMathLib\MyMathLib\obj\Debug\MyMathLib.csproj.CoreCompileInputs.cache
+D:\RiderProjects\Lab7_2\MyMathLib\MyMathLib\obj\Debug\MyMathLib.dll
+D:\RiderProjects\Lab7_2\MyMathLib\MyMathLib\obj\Debug\MyMathLib.pdb
