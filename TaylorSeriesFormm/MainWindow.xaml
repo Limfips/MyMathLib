@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"    >
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,10 +18,46 @@
         <GroupBox Header="Значения" Margin="5" 
                   Padding="5" Grid.Row="0"
                   Grid.Column="0" Grid.RowSpan="2">
-            
+            <Grid ShowGridLines="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Диапазон:" Margin="5"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" 
+                           Text="От" Margin="5"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" 
+                           Text="До" Margin="5"/>
+                <TextBox Grid.Row="2" Grid.Column="0" 
+                         x:Name="XtoTextBox"
+                         Height="20" Margin="10" Text="1"/>
+                <TextBox Grid.Row="2" Grid.Column="1" 
+                         x:Name="XfromTextBox"
+                         Height="20" Margin="10" Text="10"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" 
+                           VerticalAlignment="Center"
+                           Text="Шаг:" Margin="5"/>
+                <TextBox Grid.Row="3" Grid.Column="1" 
+                         x:Name="StepTextBox"
+                         Height="20" Margin="10" Text="1"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" 
+                           VerticalAlignment="Center"
+                           Text="Точность" Margin="5"/>
+                <TextBox Grid.Row="4" Grid.Column="1" 
+                         x:Name="EpsTextBox"
+                         Height="20" Margin="10" Text="0,01"/>
+            </Grid>
         </GroupBox>
         <DataGrid x:Name="PhonesGrid"
                   Grid.Row="0"
+                  ColumnWidth="*"
                   Grid.Column="1"
                   Grid.RowSpan="2">
         </DataGrid>

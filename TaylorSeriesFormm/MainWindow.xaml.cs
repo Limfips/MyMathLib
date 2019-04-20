@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace TaylorSeriesFormm
@@ -15,22 +16,12 @@ namespace TaylorSeriesFormm
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
-      var x = new MyMathLib.Math(1,10,2,1);
-      
-      
-      List<Phone> phonesList = new List<Phone>
-      {
-        new Phone { Title="iPhone 6S", Company="Apple", Price=0 },
-        new Phone {Title="Lumia 950", Company="Microsoft", Price=1 },
-        new Phone {Title="Nexus 5X", Company="Google", Price=2 }
-      };
-      PhonesGrid.ItemsSource = phonesList;
+      var x = new MyMathLib.Math(Convert.ToDouble(XtoTextBox.Text),
+                                Convert.ToDouble(XfromTextBox.Text),
+                                Convert.ToDouble(StepTextBox.Text),
+                                Convert.ToDouble(EpsTextBox.Text));
+      PhonesGrid.ItemsSource = x.GenerateValues();
+      PhonesGrid.CanUserAddRows = false;
     }
-  }
-  public class Phone
-  {
-    public string Title { get; set; }
-    public string Company { get; set; }
-    public int Price { get; set; }
   }
 }
