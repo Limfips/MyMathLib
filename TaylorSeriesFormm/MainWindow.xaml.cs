@@ -22,6 +22,8 @@ namespace TaylorSeriesFormm
                                 Convert.ToDouble(EpsTextBox.Text));
       PhonesGrid.ItemsSource = x.GenerateValues();
       PhonesGrid.CanUserAddRows = false;
+      EpsTextBox.Text = x.GetTime().ToString();
+
     }
   }
 }

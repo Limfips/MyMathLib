@@ -11,8 +11,8 @@ namespace MyMathLib
         private readonly double _xFrom;                                         //Интервал от
         private readonly int _n;                                                //Количество повторов
 
-        private double _finalResult;                                            //Финальный результат
         private readonly List<Function> _interimValues = new List<Function>();  //Промежуточные значения
+        private long _time;                                                     //Время работы программы
 
         public Math(double xFrom, double xTo, double xStep, double eps = 0.1)
         {
@@ -25,20 +25,31 @@ namespace MyMathLib
         //Генерация значений
         public List<Function> GenerateValues()
         {
-            double result = 0;
-            double interimResult = 0;
-            var x = _xFrom;
-            var j = 1;
+            _time = DateTime.Now.Ticks;
+            double result;
+            int j;
 
-            for (int i = 1; i <= _n+1; i++)
+            for (int i = 0; i <= _n; i++)
             {
+                j = 1;
+                result = 0;
+                var x = _xFrom;
+                for (int k = 0; k < _xFrom+_xStep*i; k++)
+                {
                     result += Func(x,j);
-                _interimValues.Add(new Function {X = x, FunctionFromX = -result, N = i});
-                x += _xStep;
-                j *= 2;
+                    x += _xStep;
+                    j *= 2;
+                }
+                _interimValues.Add(new Function {X = x-_xStep, FuncX = -result, N = i+1});
             }
-            _finalResult=-result;
+            Console.WriteLine(_time);
+            _time = DateTime.Now.Ticks - _time;
             return _interimValues;
+        }
+
+        public long GetTime()
+        {
+            return _time;
         }
 
         private double Func(double x,int n)
@@ -50,7 +61,7 @@ namespace MyMathLib
     public class Function
     {
         public double X { get; set; }
-        public double FunctionFromX { get; set; }
+        public double FuncX { get; set; }
         public int N { get; set; }
     }
 }
