@@ -9,40 +9,40 @@ namespace MyMathLib
         private readonly double _xStep;                                         //Шаг
         private readonly double _eps;                                           //Точность
         private readonly double _xFrom;                                         //Интервал от
-        private readonly int _n;                                                //Количество повторов
+        private readonly double _xTo;                                           //Интервал до
+        private readonly int _n = 5;                                            //Количество повторов
 
         private readonly List<Function> _interimValues = new List<Function>();  //Промежуточные значения
         private long _time;                                                     //Время работы программы
 
         public Math(double xFrom, double xTo, double xStep, double eps = 0.1)
         {
-            _xFrom = xFrom;
-            _n =  (int) ((xTo-xFrom)/xStep);
-            _xStep = xStep;
-            _eps = eps;
+            if (xFrom>=-1 && xFrom<=1 && xTo>=-1 && xTo<=1 && xFrom<=xTo)
+            {
+                _xTo = xTo;
+                _xFrom = xFrom;
+                _xStep = xStep;
+                _eps = eps;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         //Генерация значений
         public List<Function> GenerateValues()
         {
             _time = DateTime.Now.Ticks;
-            double result;
-            int j;
-
-            for (int i = 0; i <= _n; i++)
+            for (double x = _xFrom; x < _xTo; x+=_xStep)
             {
-                j = 1;
-                result = 0;
-                var x = _xFrom;
-                for (int k = 0; k < _xFrom+_xStep*i; k++)
+                double result = 0.0;
+                for (int j = 1; j <= _n; j++)
                 {
                     result += Func(x,j);
-                    x += _xStep;
-                    j *= 2;
+                    _interimValues.Add(new Function {X = x, FuncX = result, N = j});
                 }
-                _interimValues.Add(new Function {X = x-_xStep, FuncX = -result, N = i+1});
             }
-            Console.WriteLine(_time);
             _time = DateTime.Now.Ticks - _time;
             return _interimValues;
         }
@@ -51,7 +51,6 @@ namespace MyMathLib
         {
             return _time;
         }
-
         private double Func(double x,int n)
         {
             double result = System.Math.Pow(x, n) / n;

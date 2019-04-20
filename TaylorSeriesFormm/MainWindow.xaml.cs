@@ -16,13 +16,20 @@ namespace TaylorSeriesFormm
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
-      var x = new MyMathLib.Math(Convert.ToDouble(XtoTextBox.Text),
-                                Convert.ToDouble(XfromTextBox.Text),
-                                Convert.ToDouble(StepTextBox.Text),
-                                Convert.ToDouble(EpsTextBox.Text));
-      PhonesGrid.ItemsSource = x.GenerateValues();
-      PhonesGrid.CanUserAddRows = false;
-      EpsTextBox.Text = x.GetTime().ToString();
+      try
+      {
+        var x = new MyMathLib.Math(Convert.ToDouble(XtoTextBox.Text),
+          Convert.ToDouble(XfromTextBox.Text),
+          Convert.ToDouble(StepTextBox.Text),
+          Convert.ToDouble(EpsTextBox.Text));
+        PhonesGrid.ItemsSource = x.GenerateValues();
+        PhonesGrid.CanUserAddRows = false;
+        TimeProg.Text += " "+x.GetTime();
+      }
+      catch (Exception)
+      {
+        MessageBox.Show("Введите корректные данные!");
+      }
 
     }
   }
