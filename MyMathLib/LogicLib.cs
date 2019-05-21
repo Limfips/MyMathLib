@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml;
 
 namespace MyMathLib
 {
     public class Math
     {
-        private readonly double _xStep;                                         //Шаг
-        private readonly double _eps;                                           //Точность
-        private readonly double _xFrom;                                         //Интервал от
-        private readonly double _xTo;                                           //Интервал до
-        private readonly int _n = 5;                                            //Количество повторов
-
-        private readonly List<Function> _interimValues = new List<Function>();  //Промежуточные значения
-        private long _time;                                                     //Время работы программы
-
-        public Math(double xFrom, double xTo, double xStep, double eps = 0.1)
+        //Интервал от
+        private readonly double _xFrom;
+        //Интервал до
+        private readonly double _xTo;
+        //Шаг
+        private readonly double _xStep;
+        //Точность
+        private readonly double _eps;                                           
+        //Промежуточные значения
+        private readonly List<Values> _interimValues = new List<Values>();
+        //Время работы программы
+        private long _time;
+        private int _n;
+        
+        public Math(double xFrom, double xTo, double xStep, double eps)
         {
-            if (xFrom>=-1 && xFrom<=1 && xTo>=-1 && xTo<=1 && xFrom<=xTo)
+            if (xFrom < xTo && xFrom>= -1 && xTo<=1)
             {
                 _xTo = xTo;
                 _xFrom = xFrom;
@@ -26,22 +30,22 @@ namespace MyMathLib
             }
             else
             {
-                throw new Exception();
+                throw new ArgumentOutOfRangeException();
             }
         }
-
         //Генерация значений
-        public List<Function> GenerateValues()
+        public List<Values> GenerateValues()
         {
             _time = DateTime.Now.Ticks;
-            for (double x = _xFrom; x < _xTo; x+=_xStep)
+            
+
+            for (double x = _xFrom; x <= _xTo; x += _xStep)
             {
-                double result = 0.0;
-                for (int j = 1; j <= _n; j++)
-                {
-                    result += Func(x,j);
-                    _interimValues.Add(new Function {X = x, FuncX = result, N = j});
-                }
+                _interimValues.Add(new Values { X = x, 
+                                                FuncX = -Func(x),
+                                                FuncMath = System.Math.Log(1-x),
+                                                Difference = System.Math.Abs(-Func(x)-System.Math.Log(x)),
+                                                N = _n}); 
             }
             _time = DateTime.Now.Ticks - _time;
             return _interimValues;
@@ -51,16 +55,27 @@ namespace MyMathLib
         {
             return _time;
         }
-        private double Func(double x,int n)
+        private double Func(double x)
         {
-            double result = System.Math.Pow(x, n) / n;
-            return result - result % _eps;
+            double result = 0.0;
+            double currValue = 0;
+            int n = 1;
+            while (System.Math.Abs(currValue) > _eps) // Если очередной элемент ряда меньше точности - выход.
+            {
+                currValue = System.Math.Pow(x, n) / n;
+                result += currValue;
+                n++;
+            }
+            _n = n;
+            return result;
         }
     }
-    public class Function
+    public class Values
     {
         public double X { get; set; }
         public double FuncX { get; set; }
+        public double FuncMath { get; set; }
+        public double Difference { get; set; }
         public int N { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 
 namespace TaylorSeriesFormm
@@ -24,7 +23,7 @@ namespace TaylorSeriesFormm
           Convert.ToDouble(EpsTextBox.Text));
         PhonesGrid.ItemsSource = x.GenerateValues();
         PhonesGrid.CanUserAddRows = false;
-        TimeProg.Text += " "+x.GetTime();
+        TimeProg.Text = "Время работы программы: "+x.GetTime();
       }
       catch (Exception)
       {

@@ -34,6 +34,9 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="MathTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\..\..\DeleteCods\MathTools.dll</HintPath>
+        </Reference>
         <Reference Include="MyMathLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\MyMathLib\bin\Debug\MyMathLib.dll</HintPath>
         </Reference>
