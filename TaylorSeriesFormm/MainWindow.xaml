@@ -59,7 +59,7 @@
                            Text="Время работы программы:" Margin="0,10,0,0"/>
             </Grid>
         </GroupBox>
-        <DataGrid x:Name="PhonesGrid"
+        <DataGrid x:Name="ValueTable"
                   Grid.Row="0"
                   ColumnWidth="*"
                   Grid.Column="1"
@@ -68,7 +68,9 @@
         <Button Grid.Row="2" 
                 Grid.Column="0" 
                 Grid.ColumnSpan="2" 
-                Height="50"
+                Height="30"
+                Margin="10"
+                Content="Кнопка"
                 Click="ButtonBase_OnClick"/>
     </Grid>
 </Window>

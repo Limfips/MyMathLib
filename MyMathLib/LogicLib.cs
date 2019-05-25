@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using raminrahimzada;
 
 namespace MyMathLib
 {
     public class Math
     {
         //Интервал от
-        private readonly double _xFrom;
+        private readonly decimal _xFrom;
         //Интервал до
-        private readonly double _xTo;
+        private readonly decimal _xTo;
         //Шаг
-        private readonly double _xStep;
+        private readonly decimal _xStep;
         //Точность
-        private readonly double _eps;                                           
+        private readonly decimal _eps;                                           
         //Промежуточные значения
         private readonly List<Values> _interimValues = new List<Values>();
         //Время работы программы
         private long _time;
         private int _n;
         
-        public Math(double xFrom, double xTo, double xStep, double eps)
+        public Math(decimal xFrom, decimal xTo, decimal xStep, decimal eps)
         {
             if (xFrom < xTo && xFrom>= -1 && xTo<=1)
             {
@@ -27,6 +29,8 @@ namespace MyMathLib
                 _xFrom = xFrom;
                 _xStep = xStep;
                 _eps = eps;
+                
+                //0.10000000000000001
             }
             else
             {
@@ -37,45 +41,65 @@ namespace MyMathLib
         public List<Values> GenerateValues()
         {
             _time = DateTime.Now.Ticks;
-            
-
-            for (double x = _xFrom; x <= _xTo; x += _xStep)
+            for (decimal x = _xFrom; x <= _xTo; x = x + _xStep)
             {
+              //  Debug.WriteLine(_xFrom+" "+_xTo);
+                decimal df = 0;
+                for (int i = 1; System.Math.Abs(System.Math.Abs(Func(x, i))) > _eps; i++)
+                {
+                    df += Func(x, i);
+                    _n = i;
+                }
+
+                decimal log;
+                decimal mathFunc = 0.0M;
+                decimal differenceFunc = 0.0M;
+                try
+                {
+                    log = DecimalMath.Log(1 - x);
+                    mathFunc = GetAccurate(log,_eps);
+                    differenceFunc = GetAccurate(DecimalMath.Abs(-df - log), _eps);
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.ToString());
+                }
+                
                 _interimValues.Add(new Values { X = x, 
-                                                FuncX = -Func(x),
-                                                FuncMath = System.Math.Log(1-x),
-                                                Difference = System.Math.Abs(-Func(x)-System.Math.Log(x)),
-                                                N = _n}); 
+                    FuncX = -df,
+                    FuncMath = System.Math.Round(mathFunc,3), //  3     0,001
+                    Difference = differenceFunc,
+                    N = _n});
             }
             _time = DateTime.Now.Ticks - _time;
+            
             return _interimValues;
+        }
+
+        private decimal GetAccurate(decimal number,decimal esp)
+        {
+            string[] temp = _eps.ToString().Split('.',',');
+            
+            return System.Math.Round(number,temp[1].Length);
         }
 
         public long GetTime()
         {
             return _time;
+            
         }
-        private double Func(double x)
+        private decimal Func(decimal x, int n)
         {
-            double result = 0.0;
-            double currValue = 0;
-            int n = 1;
-            while (System.Math.Abs(currValue) > _eps) // Если очередной элемент ряда меньше точности - выход.
-            {
-                currValue = System.Math.Pow(x, n) / n;
-                result += currValue;
-                n++;
-            }
-            _n = n;
-            return result;
+            decimal result = DecimalMath.Power( x, n) / n;
+            return GetAccurate(result,_eps);
         }
     }
     public class Values
     {
-        public double X { get; set; }
-        public double FuncX { get; set; }
-        public double FuncMath { get; set; }
-        public double Difference { get; set; }
+        public decimal X { get; set; }
+        public decimal FuncX { get; set; }
+        public decimal FuncMath { get; set; }
+        public decimal Difference { get; set; }
         public int N { get; set; }
     }
 }
