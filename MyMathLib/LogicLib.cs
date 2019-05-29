@@ -57,8 +57,8 @@ namespace MyMathLib
                 try
                 {
                     log = DecimalMath.Log(1 - x);
-                    mathFunc = GetAccurate(log,_eps);
-                    differenceFunc = GetAccurate(DecimalMath.Abs(-df - log), _eps);
+                    mathFunc = GetAccurate(log);
+                    differenceFunc = GetAccurate(DecimalMath.Abs(-df - log));
                 }
                 catch (Exception e)
                 {
@@ -76,7 +76,7 @@ namespace MyMathLib
             return _interimValues;
         }
 
-        private decimal GetAccurate(decimal number,decimal esp)
+        private decimal GetAccurate(decimal number)
         {
             string[] temp = _eps.ToString().Split('.',',');
             
@@ -91,7 +91,7 @@ namespace MyMathLib
         private decimal Func(decimal x, int n)
         {
             decimal result = DecimalMath.Power( x, n) / n;
-            return GetAccurate(result,_eps);
+            return GetAccurate(result);
         }
     }
     public class Values

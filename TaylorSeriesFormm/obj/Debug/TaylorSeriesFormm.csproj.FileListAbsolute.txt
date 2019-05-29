@@ -47,3 +47,4 @@ F:\RiderProjects\Lab7_2\MyMathLib\TaylorSeriesFormm\obj\Debug\TaylorSeriesFormm.
 F:\RiderProjects\Lab7_2\MyMathLib\TaylorSeriesFormm\obj\Debug\TaylorSeriesFormm.csproj.GenerateResource.Cache
 F:\RiderProjects\Lab7_2\MyMathLib\TaylorSeriesFormm\obj\Debug\TaylorSeriesFormm.exe
 F:\RiderProjects\Lab7_2\MyMathLib\TaylorSeriesFormm\obj\Debug\TaylorSeriesFormm.pdb
+G:\RiderProjects\Lab7_2\MyMathLib\TaylorSeriesFormm\bin\Debug\MathTools.dll
